@@ -80,7 +80,11 @@ public class DashboardController extends BaseController implements Initializable
                 gamesTable.setItems(FXCollections.observableArrayList(games));
                 updateStats(games);
             },
-            ex -> showError("Failed to load games", ex.getMessage()),
+            ex -> {
+                // Backend not available - show demo mode message
+                gamesTable.setPlaceholder(new Label("Backend not running - Running in Local Mode\nClick 'Play Game' to start!"));
+                updateStats(List.of());
+            },
             spinner
         );
     }

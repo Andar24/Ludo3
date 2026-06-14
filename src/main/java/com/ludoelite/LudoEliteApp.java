@@ -21,12 +21,16 @@ public class LudoEliteApp extends Application {
         // Initialize the navigator with the primary stage
         ViewNavigator.init(primaryStage);
 
-        // If a session token already exists (e.g., from preferences), go to dashboard
-        if (SessionManager.getInstance().isLoggedIn()) {
-            ViewNavigator.navigateToDashboard();
-        } else {
-            ViewNavigator.navigateToLogin();
-        }
+        // DEMO MODE: Skip login and go directly to dashboard
+        // TODO: Re-enable authentication when backend is ready
+        ViewNavigator.navigateToDashboard();
+        
+        // Original authentication check (commented for demo):
+        // if (SessionManager.getInstance().isLoggedIn()) {
+        //     ViewNavigator.navigateToDashboard();
+        // } else {
+        //     ViewNavigator.navigateToLogin();
+        // }
 
         primaryStage.show();
     }
